@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./jquery-3.0.0.min.js"></script>
+    <script src="./risp.js"></script>
+    <script src="./rs2.js"></script>
+    <style>
+        body {
+            height: 100vh;
+            width: 100vw;
+            background-size: cover;
+        }
+    </style>
+</head>
+
+<body style="background-image:url('./bg1.jpg')" class="jquery-ripples page1">
+    <canvas width="1970" height="0" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; z-index: -1;"></canvas>
+</body>
+<script>
+    var navigatorName = "Microsoft Internet Explorer";
+    var isIE = false;
+    if (navigator.appName == navigatorName) {
+        isIE = true;
+
+    } else {
+        $(document).ready(function () {
+            $('.page1 ').ripples({
+                resolution: 512,
+                dropRadius: 20, //px
+                perturbance: 0.04,
+            });
+
+            setInterval(function () {
+                var $el = $('.page1 ');
+                var x = Math.random() * $el.outerWidth();
+                var y = Math.random() * $el.outerHeight();
+                var dropRadius = 20;
+                var strength = 0.04 + Math.random() * 0.04;
+
+                $el.ripples('drop', x, y, dropRadius, strength);
+            }, 400);
+        });
+    }
+
+
+</script>
+
+</html>
